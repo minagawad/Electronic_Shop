@@ -26,8 +26,6 @@
 	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />  </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\Models\Product\" />
-    <Folder Include="Buyers\" />
     <Folder Include="Model\NewFolder\" />
   </ItemGroup>
 

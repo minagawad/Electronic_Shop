@@ -1,5 +1,6 @@
 namespace Electronic_Shop
 {
+    using Electronic_Shop.Admin.Service.Product;
     using Electronic_Shop.Entities;
     using Electronic_Shop.Helpers;
     using Electronic_Shop.Model;
@@ -31,6 +32,8 @@ namespace Electronic_Shop
             services.Configure<JWT>(Configuration.GetSection("JWT"));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))

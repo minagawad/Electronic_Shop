@@ -10,7 +10,5 @@ namespace Electronic_Shop.Common
         }
         public List<T> Items { get; set; }
         public int TotalCount { get; set; }
-        public int? PublishedCount { get; set; }
-        public int? CountPassion { get; set; }
     }
 }

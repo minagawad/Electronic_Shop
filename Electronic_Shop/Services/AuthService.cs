@@ -5,6 +5,7 @@ namespace Electronic_Shop.Services
     using Electronic_Shop.Helpers;
     using Electronic_Shop.Model;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using System;
@@ -177,5 +178,26 @@ namespace Electronic_Shop.Services
             return jwtSecurityToken;
 
         }
+
+
+
+        //public async Task<bool> RevokeTokenAsync(string token)
+        //{
+        //    var user = await _userManager.Users.SingleOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token));
+
+        //    if (user == null)
+        //        return false;
+
+        //    var refreshToken = user.RefreshTokens.Single(t => t.Token == token);
+
+        //    if (!refreshToken.IsActive)
+        //        return false;
+
+        //    refreshToken.RevokedOn = DateTime.UtcNow;
+
+        //    await _userManager.UpdateAsync(user);
+
+        //    return true;
+        //}
     }
 }

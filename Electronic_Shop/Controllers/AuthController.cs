@@ -29,7 +29,7 @@
 
             return Ok(result);
         }
-        [HttpPost("Register")]
+        [HttpPost("AddRoles")]
         public async Task<IActionResult> AddRoleAsync([FromBody] AddRoleModel model)
         {
             if (!ModelState.IsValid)
@@ -53,5 +53,21 @@
 
             return Ok(result);
         }
+
+        //[HttpPost("revokeToken")]
+        //public async Task<IActionResult> RevokeToken([FromBody] RevokeToken model)
+        //{
+        //    var token = model.Token ?? Request.Cookies["refreshToken"];
+
+        //    if (string.IsNullOrEmpty(token))
+        //        return BadRequest("Token is required!");
+
+        //    var result = await _authService.RevokeTokenAsync(token);
+
+        //    if (!result)
+        //        return BadRequest("Token is invalid!");
+
+        //    return Ok();
+        //}
     }
 }
