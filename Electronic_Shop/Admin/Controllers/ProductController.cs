@@ -119,5 +119,34 @@ namespace Electronic_Shop.Admin.Controllers
         }
 
 
+        [HttpPost]
+        [ProducesResponseType(typeof(void), 204)]
+        [ProducesResponseType(typeof(List<string>), 400)]
+        [Route("id/{id}/discountCounfig")]
+        public async Task<IActionResult> AddDiscount([FromRoute] Guid id, [FromBody]List<DiscountCounfigurationModel> discountCounfigurationModels)
+        {
+       var product=   await  this.productService.GetById(id);
+            if (product == null)
+                throw new  Exception("Product With this Id not found");
+
+            else
+            {
+                try
+                {
+                   await this.productService.AddDiscount(id, discountCounfigurationModels);
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+
+                    return BadRequest(ex);                }
+
+
+            }
+        }
+
+       
+
+
     }
 }

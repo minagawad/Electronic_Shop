@@ -8,7 +8,6 @@ namespace Electronic_Shop.Entities
         public Product Product { get; set; }
         public int Quantity { get; set; }
         public DateTime OrederDate { get; set; }
-        public decimal TotalPrice { get; set; }
         public decimal MainPrice { get; set; }
         public decimal PriceAfterDiscount { get; set; }
 

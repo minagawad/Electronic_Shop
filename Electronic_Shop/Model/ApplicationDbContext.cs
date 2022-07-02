@@ -39,7 +39,8 @@ namespace Electronic_Shop.Model
         public DbSet<Order> Orders { get; set; }
         public DbSet<DiscountConfiguration> DiscountConfigurations { get; set; }
 
-      
+        public DbSet<ProductOrder> ProductOrders { get; set; }
+
 
     }
 }

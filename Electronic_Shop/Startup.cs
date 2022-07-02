@@ -1,6 +1,7 @@
 namespace Electronic_Shop
 {
     using Electronic_Shop.Admin.Service.Product;
+    using Electronic_Shop.Buyers.Services;
     using Electronic_Shop.Entities;
     using Electronic_Shop.Helpers;
     using Electronic_Shop.Model;
@@ -33,6 +34,7 @@ namespace Electronic_Shop
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderservice, OrderService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
 
