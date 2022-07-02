@@ -2,6 +2,7 @@
 using Electronic_Shop.Admin.Models.Product;
 using Electronic_Shop.Admin.Service.Product;
 using Electronic_Shop.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace Electronic_Shop.Admin.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProductController : BaseController
     {
         private readonly IProductService productService;
@@ -24,6 +26,7 @@ namespace Electronic_Shop.Admin.Controllers
         [Route("Creat")]
         [ProducesResponseType(typeof(MessageResponse<ProductDto>), 200)]
         [ProducesResponseType(typeof(List<string>), 400)]
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> Add(ProductDto product)
         {
@@ -63,7 +66,7 @@ namespace Electronic_Shop.Admin.Controllers
         [Route("Filter")]
         [ProducesResponseType(typeof(MessageResponse<ListModel<ProductDto>>), 200)]
         [ProducesResponseType(typeof(List<string>), 400)]
-
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> RetriveProducts([FromBody] ProductFilterMdel productFilter)
         {
@@ -88,6 +91,7 @@ namespace Electronic_Shop.Admin.Controllers
         [Route("id/{id}")]
         [ProducesResponseType(typeof(ProductDto), 200)]
         [ProducesResponseType(404)]
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> GetProductById([FromRoute] Guid id)
         {
@@ -102,6 +106,7 @@ namespace Electronic_Shop.Admin.Controllers
         [ProducesResponseType(typeof(void), 204)]
         [ProducesResponseType(typeof(List<string>), 400)]
         [Route("id/{id}")]
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult> DeleteProduct([FromRoute] Guid id)
         {
@@ -123,6 +128,8 @@ namespace Electronic_Shop.Admin.Controllers
         [ProducesResponseType(typeof(void), 204)]
         [ProducesResponseType(typeof(List<string>), 400)]
         [Route("id/{id}/discountCounfig")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> AddDiscount([FromRoute] Guid id, [FromBody]List<DiscountCounfigurationModel> discountCounfigurationModels)
         {
        var product=   await  this.productService.GetById(id);

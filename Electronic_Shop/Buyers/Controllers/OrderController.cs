@@ -1,5 +1,6 @@
 ﻿using Electronic_Shop.Buyers.Models;
 using Electronic_Shop.Buyers.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,8 @@ namespace Electronic_Shop.Buyers.Controllers
             _orderService = orderservice;
 
         }
+        [Authorize(Roles = "user")]
+        [HttpPost]
         public async Task<IActionResult> CreatOrder(OrderModel orderModel)
         {
             try
